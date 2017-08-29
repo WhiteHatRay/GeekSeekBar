@@ -90,7 +90,7 @@ public class TecCircleSeekBar extends View {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TecCircleSeekBarStyle, defStyleAttr, 0);
             //开发者设置的外圆宽度和颜色
             progressWidth = typedArray.getDimension(R.styleable.TecCircleSeekBarStyle_outerWidth, progressWidth);
-            progressColor = typedArray.getColor(R.styleable.TecCircleSeekBarStyle_outerWidth, progressColor);
+            progressColor = typedArray.getColor(R.styleable.TecCircleSeekBarStyle_outerColor, progressColor);
 
             //开发者设置的内圆宽度和颜色
             innerProgressWidth = typedArray.getDimension(R.styleable.TecCircleSeekBarStyle_innerWidth, innerProgressWidth);
@@ -101,12 +101,17 @@ public class TecCircleSeekBar extends View {
             innerPadding = typedArray.getDimension(R.styleable.TecCircleSeekBarStyle_innerPadding, innerPadding);
             //旋转的值
             rotation = typedArray.getInt(R.styleable.TecCircleSeekBarStyle_rotation, rotation);
+            //总值
+            sumRotation = typedArray.getInt(R.styleable.TecCircleSeekBarStyle_sumRotation, sumRotation);
 
             //顺时针还是逆时针
             clockWise = typedArray.getBoolean(R.styleable.TecCircleSeekBarStyle_clockWise, clockWise);
 
             //控件度数
             sweepAngle = typedArray.getInt(R.styleable.TecCircleSeekBarStyle_sweepAngle, sweepAngle);
+
+            //只能放在rotation、sumRotation、sweepAngle设置值之后
+            progressSweepAngle = (int) Math.round((double) rotation / sumRotation * sweepAngle);
 
             //只有360度的圆圈可以有矫正度数
             if (sweepAngle == 360) {
@@ -142,13 +147,13 @@ public class TecCircleSeekBar extends View {
         outerPaint.setStrokeWidth(progressWidth);
         outerPaint.setPathEffect(progressEffect);
 
-        PathEffect innerBgffect = new DashPathEffect(new float[] {8, 2, 8, 2}, 1);
+        PathEffect innerBgEffect = new DashPathEffect(new float[] {8, 2, 8, 2}, 1);
         innerBgPaint = new Paint();
         innerBgPaint.setColor(innerProgressBgColor);
         innerBgPaint.setAntiAlias(true);
         innerBgPaint.setStyle(Paint.Style.STROKE);
         innerBgPaint.setStrokeWidth(innerProgressWidth);
-        innerBgPaint.setPathEffect(innerBgffect);
+        innerBgPaint.setPathEffect(innerBgEffect);
 
         PathEffect innerProgressEffect = new PathEffect();
         innerPaint = new Paint();

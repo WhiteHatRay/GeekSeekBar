@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.geek_era.android.testapp.MainActivity">
+    android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -20,14 +20,46 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Example one"/>
+            <com.geek_era.android.testapp.TecCircleSeekBar
+                android:id="@+id/view"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:correctAngle="70"
+                app:sweepAngle="250"
+                app:clockWise="false"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
 
-</android.support.design.widget.CoordinatorLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Example two"/>
+
+            <com.geek_era.android.testapp.TecCircleSeekBar
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                app:outerWidth="5dp"
+                app:outerColor="#FC7322"
+                app:innerWidth="15dp"
+                app:innerColor="#FD4655"
+                app:innerBgColor="#FC7322"
+                app:innerPadding="5dp"
+                app:rotation="100"
+                app:sumRotation="200"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

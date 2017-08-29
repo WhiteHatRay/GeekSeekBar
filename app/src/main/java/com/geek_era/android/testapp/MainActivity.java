@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         TecCircleSeekBar view = (TecCircleSeekBar) findViewById(R.id.view);
-        view.setRotation(500);
+        view.setRotation(180);
         view.setSumRotation(200);
         view.setChangeListener(new GeekSeekBarOnChangeListener() {
             @Override

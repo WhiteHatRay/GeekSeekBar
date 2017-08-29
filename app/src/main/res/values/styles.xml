@@ -31,6 +31,8 @@
         <attr name="innerPadding" format="dimension"/>
         <!--当前的值-->
         <attr name="rotation" format="integer"/>
+        <!--总的值-->
+        <attr name="sumRotation" format="integer"/>
         <!--thumb-->
         <attr name="thumb" format="reference"/>
         <!--顺时针还是逆时针-->
